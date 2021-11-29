@@ -10,13 +10,13 @@ Leader 维护了一个动态的 in-sync replica set (ISR)，意为和 leader 保
 
 producer 不等待 broker 的 ack，这一操作提供了一个最低的延迟，broker 一接收到还 没有写入磁盘就已经返回，当 broker 故障时有可能丢失数据
 
-
+![image-20210712151033276](image/image-20210712151033276-16381565148591.png)
 
 - acks = 1
 
 producer 等待 broker 的 ack，partition 的 leader 落盘成功后返回 ack，如果在 follower 同步成功之前 leader 故障，那么将会丢失数据
 
-<img src="E:\Javadream\Kafka\6-Kafka 数据可靠性保证.assets\image-20210712151033276.png" alt="image-20210712151033276" style="zoom:200%;" />
+![image-20210712151119348](image/image-20210712151119348-16381565174972.png)
 
 leader返回ack，isr里面的follower还没来得及落盘leader就down掉了
 
@@ -24,11 +24,11 @@ leader返回ack，isr里面的follower还没来得及落盘leader就down掉了
 
 必须等待所有isr里面的follower更新完毕才能返回ack，如果leader半截down掉，可能会造成 数据的重复，比如leader写完12345，follower写完123，leader down掉，follower成为新leader，由于长时间没有ack，producer重发刚才的12345，这样123就重复了
 
-<img src="E:\Javadream\Kafka\6-Kafka 数据可靠性保证.assets\image-20210712151136655.png" alt="image-20210712151136655" style="zoom:200%;" />
+![image-20210712151136655](image/image-20210712151136655.png)
 
 ## 故障处理细节
 
-![image-20210712151345171](E:\Javadream\Kafka\6-Kafka 数据可靠性保证.assets\image-20210712151345171.png)
+![image-20210712151345171](image/image-20210712151345171.png)
 
 **LEO：指的是每个副本最大的 offset； **
 

@@ -2,9 +2,7 @@
 
 Kafka 集群中有一个 broker 会被选举为 Controller，负责管理集群 broker 的上下线，所 有 topic 的分区副本分配和 leader 选举等工作。 Controller 的管理工作都是依赖于 Zookeeper 的。 以下为 partition 的 leader 选举过程：
 
-
-
-![image-20210712154004159](E:\Javadream\Kafka\8-Zookeeper在Kafka中的作用.assets\image-20210712154004159.png)
+![image-20210712154004159](image/image-20210712154004159.png)
 
 ## producer事务
 

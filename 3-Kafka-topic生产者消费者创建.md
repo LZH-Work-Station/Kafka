@@ -4,17 +4,17 @@
 
 在小箭头后面输入东西 在消费者那管理就可以看到
 
-![image-20210711214454127](E:\Javadream\Kafka\Kafka-topic生产者消费者创建.assets\image-20210711214454127.png)
+![image-20210711214454127](image/image-20210711214454127.png)
 
 ## 2. 创建消费者
 
-![image-20210711214700674](E:\Javadream\Kafka\Kafka-topic生产者消费者创建.assets\image-20210711214700674.png)
+![image-20210711214700674](image/image-20210711214700674.png)
 
 可以接收到消费者的消息
 
 
 
-![image-20210711214751133](E:\Javadream\Kafka\Kafka-topic生产者消费者创建.assets\image-20210711214751133.png)
+![image-20210711214751133](image/image-20210711214751133.png)
 
 - 使用 --from-beginning能拿到 在这个consumer没有up之前的product的数据
 
@@ -25,4 +25,4 @@
 
 - 后面的数字是consumer_offsets的分区，每次消费了数据就会在（可能是hash运算）所对应的分区写上消费到了多少偏移量
 
-![image-20210711220030995](E:\Javadream\Kafka\3-Kafka-topic生产者消费者创建.assets\image-20210711220030995.png)
+![image-20210711220030995](image/image-20210711220030995-16381563561581.png)

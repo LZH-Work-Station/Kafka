@@ -1,6 +1,6 @@
 # 分区策略
 
-![image-20210712150746252](E:\Javadream\Kafka\5-Kafka数据的分区原则.assets\image-20210712150746252.png)
+![image-20210712150746252](image/image-20210712150746252.png)
 
 （1）指明 partition 的情况下，直接将指明的值直接作为 partiton 值； 
 
