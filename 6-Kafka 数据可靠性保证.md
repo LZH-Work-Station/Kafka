@@ -22,7 +22,7 @@ leader返回ack，isr里面的follower还没来得及落盘leader就down掉了
 
 - acks = -1
 
-必须等待所有isr里面的follower更新完毕才能返回ack，如果leader半截down掉，可能会造成 数据的重复，比如leader写完12345，follower写完123，leader down掉，follower成为新leader，由于长时间没有ack，producer重发刚才的12345，这样123就重复了
+必须等待所有isr里面的follower更新完毕才能返回ack，如果leader半截down掉，可能会造成 数据的重复，比如leader写完hello，follower复制完hello，leader down掉但是没有**来得及返回ack**，follower成为新leader，由于长时间没有ack，producer重发刚才的hello，这样hello就重复了
 
 ![image-20210712151136655](image/image-20210712151136655.png)
 
@@ -55,7 +55,5 @@ follower3：12345
 ## Exactly Once
 
 Producer在初始化的时候会有一个PID，然后PID，Partition和SeqNumber会组成消息的key，每个broker只会缓存key不同的消息，这样就保证了消息的不重复性
-
-
 
 但是，如果producer重启，PID被重新分配，这样就会造成，key不同了，也就无法保证exactly Once。
